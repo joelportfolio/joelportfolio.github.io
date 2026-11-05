@@ -1,11 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web Design Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Full Name — Personal Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f8f6f2;
+    --ink: #1f1f1f;
+    --sage: #7a8f85;
+    --sage-dark: #5f7168;
+    --sage-light: #dfe4de;
+    --muted: #6b6b6b;
+    --card-border: #e6e3dd;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  /* ---------- Shared slide frame ---------- */
+  .slide {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .slide-inner {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 48px 40px;
+  }
+  .eyebrow {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--sage);
+  }
+  .rule-short { width: 112px; height: 3px; background: var(--sage); margin-top: 36px; }
+  .slide-footer {
+    width: 100%; max-width: 1200px; margin: 0 auto;
+    padding: 0 48px 28px;
+    font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: #a5a5a0;
+  }
+  .slide-footer .sep { margin: 0 6px; }
+
+  /* ---------- Slide 1: Cover ---------- */
+  .topbar {
+    text-align: center;
+    padding: 36px 24px 0;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--sage);
+  }
+  .topbar .dot { margin: 0 8px; }
+  .hero {
+    flex: 1;
+    width: 100%; max-width: 1200px;
+    margin: 0 auto;
+    padding: 56px 48px 40px;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .left { display: flex; flex-direction: column; min-height: 100%; }
+  .index { font-size: 16px; font-weight: 700; color: var(--sage); }
+  .label-row { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+  .label-row .line { width: 44px; height: 2px; background: var(--sage); }
+  .label-row span {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #444;
+  }
+  h1.name {
+    margin-top: 40px;
+    font-size: clamp(56px, 8vw, 88px);
+    line-height: 1.02; font-weight: 800;
+    letter-spacing: -0.01em; text-transform: uppercase;
+  }
+  .pill {
+    display: inline-block; align-self: flex-start;
+    margin-top: 36px; padding: 12px 70px;
+    background: var(--sage-light); color: var(--sage-dark);
+    border-radius: 999px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; text-align: center;
+  }
+  .tagline { margin-top: 32px; font-size: 14px; color: var(--muted); letter-spacing: 0.01em; }
+  .footer-rule { margin-top: auto; padding-top: 80px; }
+  .footer-rule .rule { height: 1px; background: var(--ink); }
+  .footer-rule .meta {
+    display: flex; gap: 24px; flex-wrap: wrap; margin-top: 18px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .footer-rule .meta .soft { font-weight: 400; color: #5d7f93; }
+  .photo {
+    border: 1.5px dashed var(--sage);
+    background: #fff;
+    aspect-ratio: 4 / 5;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo.filled { border: none; }
+  .placeholder { text-align: center; padding: 16px; }
+  .placeholder strong { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+  .placeholder em { display: block; margin-top: 6px; font-size: 9px; color: var(--muted); }
+
+  /* ---------- Slide 2: Read this first ---------- */
+  h2.big {
+    margin-top: 40px;
+    font-size: clamp(48px, 7vw, 76px);
+    font-weight: 700; letter-spacing: -0.01em; line-height: 1.05;
+  }
+  .three-col {
+    margin-top: 56px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .col .col-label {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage);
+  }
+  .col .col-label b { margin-right: 6px; }
+  .col h3 { margin-top: 32px; font-size: 24px; font-weight: 700; letter-spacing: -0.005em; }
+  .col p { margin-top: 64px; font-size: 13px; line-height: 1.5; color: var(--muted); }
+
+  /* ---------- Slide 3: Step 01 ---------- */
+  .step-layout {
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 40px; align-items: center;
+  }
+  .ghost-num {
+    font-size: clamp(140px, 22vw, 260px);
+    font-weight: 800; font-style: italic;
+    color: var(--sage-light); line-height: 1;
+    letter-spacing: -0.04em; text-align: center;
+    user-select: none;
+  }
+  .step-body h2 {
+    margin-top: 40px;
+    font-size: clamp(40px, 5.2vw, 58px);
+    font-weight: 700; letter-spacing: -0.01em; line-height: 1.1;
+  }
+  .step-body .hint {
+    margin-top: 40px; font-size: 13px; font-style: italic; color: var(--muted);
+  }
+  .steps { margin-top: 28px; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .steps li { display: flex; align-items: center; gap: 18px; font-size: 13px; }
+  .steps .n {
+    flex: 0 0 32px; height: 32px; border-radius: 50%;
+    background: var(--ink); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+  }
+
+  /* ---------- Slide 4: Three things ---------- */
+  h2.mid {
+    margin-top: 28px;
+    font-size: clamp(36px, 5vw, 52px);
+    font-weight: 700; letter-spacing: -0.01em; line-height: 1.1;
+  }
+  .cards {
+    margin-top: 40px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--card-border);
+    padding: 20px 22px 28px;
+  }
+  .card .letter { font-size: 64px; font-weight: 800; color: var(--sage); line-height: 1; }
+  .card h3 { margin-top: 18px; font-size: 18px; font-weight: 700; }
+  .card .mini-rule { width: 60px; height: 1px; background: var(--sage); margin-top: 16px; }
+  .card ol { margin-top: 20px; list-style: none; counter-reset: c; display: flex; flex-direction: column; gap: 18px; }
+  .card li {
+    counter-increment: c;
+    display: flex; gap: 16px;
+    font-size: 11px; line-height: 1.45; color: #3a3a3a;
+  }
+  .card li::before {
+    content: counter(c) ".";
+    flex: 0 0 14px; font-size: 11px; font-weight: 700; color: var(--sage);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .slide-inner, .hero { padding: 40px 24px; }
+    .slide-footer { padding: 0 24px 24px; }
+    .hero { grid-template-columns: 1fr; gap: 48px; }
+    .photo { max-width: 480px; width: 100%; margin: 0 auto; }
+    .pill { padding: 12px 36px; }
+    .footer-rule { padding-top: 48px; }
+    .three-col, .cards { grid-template-columns: 1fr; gap: 32px; }
+    .col h3 { margin-top: 16px; }
+    .col p { margin-top: 16px; }
+    .step-layout { grid-template-columns: 1fr; }
+    .ghost-num { text-align: left; }
+  }
+</style>
 </head>
 <body>
-    <h1>Hello World! Welcome to my Portfolio.</h1>
+
+  <!-- ============ SLIDE 1 — COVER ============ -->
+  <section class="slide" id="cover">
+    <header class="topbar">Portfolio <span class="dot">•</span> Two Thousand Twenty-Six</header>
+    <div class="hero">
+      <div class="left">
+        <div class="index">01</div>
+        <div class="label-row"><div class="line"></div><span>Personal Portfolio</span></div>
+        <h1 class="name">Your<br>Full Name.</h1>
+        <div class="pill">[Your Niche or Specialization]</div>
+        <p class="tagline">A one-line statement of who you serve and the outcome you deliver.</p>
+        <div class="footer-rule">
+          <div class="rule"></div>
+          <div class="meta">
+            <span>Issue No. 01</span>
+            <span class="soft">Personal Portfolio</span>
+            <span>Minimalist Edition</span>
+          </div>
+        </div>
+      </div>
+      <aside class="photo" id="photo">
+        <div class="placeholder">
+          <strong>Replace with your cover photo</strong>
+          <em>Recommended: 1200 x 1500 px portrait</em>
+        </div>
+        <!-- To use your photo, replace the placeholder above with:
+             <img src="your-photo.jpg" alt="Your Full Name"> and add class "filled" to #photo -->
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 2 — READ THIS FIRST ============ -->
+  <section class="slide" id="welcome">
+    <div class="slide-inner">
+      <div class="eyebrow">Welcome</div>
+      <h2 class="big">Read this first.</h2>
+      <div class="rule-short"></div>
+
+      <div class="three-col">
+        <div class="col">
+          <div class="col-label"><b>01</b> What this is</div>
+          <h3>A finished template.</h3>
+          <p>Every slide is already designed. You are not building from scratch. You are filling in the blanks on a layout that already works.</p>
+        </div>
+        <div class="col">
+          <div class="col-label"><b>02</b> How it works</div>
+          <h3>Two slides per section.</h3>
+          <p>Each section has a guide page (with instructions, arrows, and steps) followed by a clean template page. Fill in the clean page. Delete the guide page.</p>
+        </div>
+        <div class="col">
+          <div class="col-label"><b>03</b> What to replace</div>
+          <h3>Anything in [brackets].</h3>
+          <p>Square brackets mean replace me. Dashed boxes mean drop a photo or logo here. Italic gray text means a tip you can delete after reading.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">Katam-Bray <span class="sep">·</span> Portfolio Template <span class="sep">·</span> Minimalist Edition</div>
+  </section>
+
+  <!-- ============ SLIDE 3 — STEP 01 ============ -->
+  <section class="slide" id="step-01">
+    <div class="slide-inner">
+      <div class="step-layout">
+        <div class="ghost-num" aria-hidden="true">01</div>
+        <div class="step-body">
+          <div class="eyebrow" style="color:#8a8a85;">Step 01</div>
+          <h2>Make your own copy.</h2>
+          <p class="hint">Do not edit this original. Make a copy first, then edit the copy.</p>
+          <ul class="steps">
+            <li><span class="n">1</span>Open the menu bar at the top of the screen.</li>
+            <li><span class="n">2</span>Click File. A dropdown will appear.</li>
+            <li><span class="n">3</span>Click Make a Copy. Choose Entire Presentation.</li>
+            <li><span class="n">4</span>Rename it to: [Your Full Name] Portfolio 2026.</li>
+            <li><span class="n">5</span>Begin editing your new copy.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">Katam-Bray <span class="sep">·</span> Portfolio Template <span class="sep">·</span> Minimalist Edition</div>
+  </section>
+
+  <!-- ============ SLIDE 4 — HOW TO USE ============ -->
+  <section class="slide" id="how-to-use">
+    <div class="slide-inner">
+      <div class="eyebrow">How to use</div>
+      <h2 class="mid">Three things you'll do on every slide.</h2>
+      <div class="rule-short" style="margin-top:28px;"></div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="letter">A</div>
+          <h3>Replace a photo</h3>
+          <div class="mini-rule"></div>
+          <ol>
+            <li>Right-click the photo placeholder.</li>
+            <li>Choose Replace image, then Upload from computer.</li>
+            <li>To make it round: click the photo, go to Format options &gt; Crop, then choose the oval mask.</li>
+          </ol>
+        </article>
+        <article class="card">
+          <div class="letter">B</div>
+          <h3>Add a clickable link</h3>
+          <div class="mini-rule"></div>
+          <ol>
+            <li>Highlight the text or shape you want to link.</li>
+            <li>Press Ctrl + K (Cmd + K on Mac).</li>
+            <li>Paste your URL. Click Apply. The text becomes clickable.</li>
+          </ol>
+        </article>
+        <article class="card">
+          <div class="letter">C</div>
+          <h3>Edit text</h3>
+          <div class="mini-rule"></div>
+          <ol>
+            <li>Double-click any text on the slide to edit it.</li>
+            <li>Replace anything in [square brackets] with your real info.</li>
+            <li>Italic gray hints can be deleted once you've read them.</li>
+          </ol>
+        </article>
+      </div>
+    </div>
+    <div class="slide-footer">Katam-Bray <span class="sep">·</span> Portfolio Template <span class="sep">·</span> Minimalist Edition</div>
+  </section>
+
 </body>
 </html>
