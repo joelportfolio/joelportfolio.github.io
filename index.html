@@ -116,7 +116,6 @@
   .placeholder strong { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
   .placeholder em { display: block; margin-top: 6px; font-size: 9px; color: var(--muted); }
 
-  /* ---------- Slide 2: Read this first ---------- */
   h2.big {
     margin-top: 40px;
     font-size: clamp(48px, 7vw, 76px);
@@ -136,6 +135,13 @@
   .col p { margin-top: 64px; font-size: 13px; line-height: 1.5; color: var(--muted); }
 
   /* ---------- Slide 3: Step 01 ---------- */
+  .logo {
+    max-width: 100%;
+    height: auto;
+    width: 60px;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
   .step-layout {
     display: grid; grid-template-columns: 1fr 1.2fr;
     gap: 40px; align-items: center;
@@ -175,6 +181,11 @@
     display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 24px;
   }
+  .cards2 {
+    margin-top: 40px;
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
   .card {
     background: #fff;
     border: 1px solid var(--card-border);
@@ -189,12 +200,56 @@
     display: flex; gap: 16px;
     font-size: 11px; line-height: 1.45; color: #3a3a3a;
   }
+  .card p {
+    counter-increment: c;
+    display: flex; 
+    gap: 16px;
+    font-size: 13px; 
+    line-height: 1.45; color: #3a3a3a;
+  }
   .card li::before {
     content: counter(c) ".";
     flex: 0 0 14px; font-size: 11px; font-weight: 700; color: var(--sage);
   }
 
-  /* ---------- Slide 5: Built by ---------- */
+  /* ---------- STEP 5 - ABOUT ------------- */
+
+  .slide.about-me {
+    background-color: #ffffff; /* Matches the clean white backdrop of slide 4 */
+  }
+
+  /* Reuses .split-content-container and .content-box properties for alignment balance */
+  .profile-box {
+      border-left: 5px solid #00732f; /* Accents the bio card with professional bookkeeping green */
+      background-color: #f4faf6;      /* Subtle green tint matching your previous solution box */
+  }
+
+  .communication-box {
+      border-left: 5px solid #1d2731; /* Subtle slate boundary for contact channels */
+      background-color: #f8f9fa;      /* Clean neutral light-grey background */
+  }
+
+  /* Content adjustments inside the contact box */
+  .communication-box strong {
+      font-size: 0.85rem;
+      color: #1d2731;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+  }
+
+  .portfolio-link {
+      color: #00732f;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease, text-decoration 0.2s ease;
+  }
+
+  .portfolio-link:hover {
+      color: #1a532e;
+      text-decoration: underline;
+  }
+
+  /* ---------- Slide 6: Built by ---------- */
   h2.credit {
     margin-top: 36px;
     font-size: clamp(52px, 9vw, 104px);
@@ -225,14 +280,13 @@
 
   <!-- ============ SLIDE 1 — COVER ============ -->
   <section class="slide" id="cover">
-    <header class="topbar">Portfolio <span class="dot">•</span> Two Thousand Twenty-Six</header>
+    <header class="topbar">Portfolio <span class="dot">•</span> 2026</header>
     <div class="hero">
       <div class="left">
-        <div class="index">01</div>
         <div class="label-row"><div class="line"></div><span>Personal Portfolio</span></div>
         <h1 class="name">JOEL DAN VEÑALON</h1>
-        <div class="pill">[Your Niche or Specialization]</div>
-        <p class="tagline">A one-line statement of who you serve and the outcome you deliver.</p>
+        <div class="pill">Freelance Bookkeeping Assistant</div>
+        <p class="tagline">Helping small business owners clean up their books, track cash flow, and prepare for tax season with 100% accuracy.</p>
         <div class="footer-rule">
           <div class="rule"></div>
         </div>
@@ -248,105 +302,126 @@
   <!-- ============ SLIDE 2 — READ THIS FIRST ============ -->
   <section class="slide" id="welcome">
     <div class="slide-inner">
-      <div class="eyebrow">Welcome</div>
-      <h2 class="big">Read this first.</h2>
+      <h2 class="big">Core skills</h2>
       <div class="rule-short"></div>
 
       <div class="three-col">
         <div class="col">
-          <div class="col-label"><b>01</b> What this is</div>
-          <h3>A finished template.</h3>
-          <p>Every slide is already designed. You are not building from scratch. You are filling in the blanks on a layout that already works.</p>
+          <h3>Clean-Up & Catch-Up</h3>
+          <p>Organizing months of unrecorded transactions, categorizing historical expenses, and fixing chart of accounts errors.</p>
         </div>
         <div class="col">
-          <div class="col-label"><b>02</b> How it works</div>
-          <h3>Two slides per section.</h3>
-          <p>Each section has a guide page (with instructions, arrows, and steps) followed by a clean template page. Fill in the clean page. Delete the guide page.</p>
+          <h3>Monthly Bookkeeping</h3>
+          <p>Bank and credit card reconciliations, tracking accounts payable (bills) and accounts receivable (invoices).</p>
         </div>
         <div class="col">
-          <div class="col-label"><b>03</b> What to replace</div>
-          <h3>Anything in [brackets].</h3>
-          <p>Square brackets mean replace me. Dashed boxes mean drop a photo or logo here. Italic gray text means a tip you can delete after reading.</p>
+          <h3>Financial Reporting</h3>
+          <p>Delivering accurate monthly Profit & Loss statements, Balance Sheets, and Statement of Cash Flows.</p>
         </div>
       </div>
     </div>
-    <div class="slide-footer">Katam-Bray <span class="sep">·</span> Portfolio Template <span class="sep">·</span> Minimalist Edition</div>
   </section>
 
-  <!-- ============ SLIDE 3 — STEP 01 ============ -->
-  <section class="slide" id="step-01">
-    <div class="slide-inner">
-      <div class="step-layout">
-        <div class="ghost-num" aria-hidden="true">01</div>
-        <div class="step-body">
-          <div class="eyebrow" style="color:#8a8a85;">Step 01</div>
-          <h2>Make your own copy.</h2>
-          <p class="hint">Do not edit this original. Make a copy first, then edit the copy.</p>
-          <ul class="steps">
-            <li><span class="n">1</span>Open the menu bar at the top of the screen.</li>
-            <li><span class="n">2</span>Click File. A dropdown will appear.</li>
-            <li><span class="n">3</span>Click Make a Copy. Choose Entire Presentation.</li>
-            <li><span class="n">4</span>Rename it to: [Your Full Name] Portfolio 2026.</li>
-            <li><span class="n">5</span>Begin editing your new copy.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="slide-footer">Katam-Bray <span class="sep">·</span> Portfolio Template <span class="sep">·</span> Minimalist Edition</div>
-  </section>
-
-  <!-- ============ SLIDE 4 — HOW TO USE ============ -->
+  <!-- ============ SLIDE 3 — HOW TO USE ============ -->
   <section class="slide" id="how-to-use">
     <div class="slide-inner">
-      <div class="eyebrow">How to use</div>
-      <h2 class="mid">Three things you'll do on every slide.</h2>
+      <h2 class="mid">Software & Tools Ecosystem</h2>
       <div class="rule-short" style="margin-top:28px;"></div>
 
       <div class="cards">
         <article class="card">
-          <div class="letter">A</div>
-          <h3>Replace a photo</h3>
+          <div class="letter">
+            <img src="images/xero.png" class="logo" alt="xero">
+          </div>
+          <h3>Accounting Platforms</h3>
           <div class="mini-rule"></div>
           <ol>
-            <li>Right-click the photo placeholder.</li>
-            <li>Choose Replace image, then Upload from computer.</li>
-            <li>To make it round: click the photo, go to Format options &gt; Crop, then choose the oval mask.</li>
+            <li>QuickBooks Online & Xero.</li>
+            <li>Cloud ecosystem management.</li>
+            <li>Bank rule automation & data feeds.</li>
           </ol>
         </article>
         <article class="card">
-          <div class="letter">B</div>
-          <h3>Add a clickable link</h3>
+          <div class="letter">
+            <img src="images/excel.jfif" class="logo" alt="excel">
+          </div>
+          <h3>Spreadsheets & Data</h3>
           <div class="mini-rule"></div>
           <ol>
-            <li>Highlight the text or shape you want to link.</li>
-            <li>Press Ctrl + K (Cmd + K on Mac).</li>
-            <li>Paste your URL. Click Apply. The text becomes clickable.</li>
+            <li>Excel & Google Sheets.</li>
+            <li>Advanced financial data formatting.</li>
+            <li>Pivot Tables, VLOOKUP, & formulas.</li>
           </ol>
         </article>
         <article class="card">
-          <div class="letter">C</div>
-          <h3>Edit text</h3>
+          <div class="letter">
+            <img src="images/drive.png" class="logo" alt="drive">
+          </div>
+          <h3>Receipts & Storage</h3>
           <div class="mini-rule"></div>
           <ol>
-            <li>Double-click any text on the slide to edit it.</li>
-            <li>Replace anything in [square brackets] with your real info.</li>
-            <li>Italic gray hints can be deleted once you've read them.</li>
+            <li>Dext, Hubdoc, & cloud storage.</li>
+            <li>Paperless document workflows.</li>
+            <li>Secure receipt matching & tracking.</li>
           </ol>
         </article>
       </div>
     </div>
-    <div class="slide-footer">Katam-Bray <span class="sep">·</span> Portfolio Template <span class="sep">·</span> Minimalist Edition</div>
   </section>
 
-  <!-- ============ SLIDE 5 — BUILT BY ============ -->
+  <!-- SLIDE 4: CASE STUDY -->
+<section class="slide" id="study">
+    <div class="slide-inner">
+      <span class="category-tag">CASE STUDY</span>
+      <h2 class="mid">E-Commerce Bookkeeping Clean-Up</h2>
+      <div>
+        <div class="cards2">
+          <article class="card">
+              <h3>The Challenge</h3>
+              <div class="mini-rule"></div><br>
+              <p>A mock e-commerce retailer had 6 months of un-categorized Shopify sales and mixed business/personal expenses. Bank balances did not match the registry, causing messy financial records.</p>
+          </article>
+          <article class="card">
+            <h3>The solution</h3>
+            <div class="mini-rule"></div><br>
+            <p>Cleaned up the Chart of Accounts, set up automated bank rules to sort transactions, and reconciled all bank statements to the penny. Delivered a pristine Balance Sheet and Profit & Loss report.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- SLIDE 5 ABOUT -->
+<section class="slide" id="about">
+  <div class="slide-inner">
+    
+    <div class="cards2" >
+      <article style="padding: 20px 22px 28px;">
+        <span class="category-tag">ABOUT ME</span>
+        <h2 class="mid">HI! I'm Joel Dan!</h2><br>
+        <h2>My Commitment</h2><br>
+        <p>I am a virtual bookkeeper focused on bringing clarity, accuracy, and order to your business finances. By leveraging cloud tools like QuickBooks and Xero, I manage the numbers so you can focus entirely on growing your business. Let's get your books tax-ready and perfectly organized.</p><br>
+        <h2>Get in touch</h2><br>
+        <p><strong>Professional Platforms:</strong></p><br>
+        <p><strong>Email address: </strong>joeldanvenalon@gmail.com</p>
+        <p><strong>UpWork profile: </strong><a href="#">Click to view profile</a></p>
+        <p><strong>LinkedIn profile: </strong><a href="#">Click to view profile</a></p>
+      </article>
+      <article style="padding: 20px 22px 28px;">
+        <img src="images/6219623475593285919.jpg" style="max-width: 100%; height: auto; display: block;" alt="Joel">
+      </article>
+    </div>
+  </div>
+</section>
+
+  <!-- ============ SLIDE 6 — BUILT BY ============ -->
   <section class="slide" id="built-by" style="border-bottom:none;">
     <div class="slide-inner">
-      <div class="eyebrow" style="color:#8a8a85;">Built by</div>
-      <h2 class="credit">Brayarn,<br>for Katam-Bray.</h2>
-      <div class="rule-short" style="margin-top:44px;"></div>
-      <p class="credit-note">This portfolio template was designed by Brayarn, Founder of the Katam-Bray Learning Portal. Every Katam-Bray template is one hundred percent free, with no upsells or paid versions. If this template helps you land work, that is the only thank-you needed.</p>
+      <h2 class="credit" style="justify-content: center; text-align: center;">Let's work together!</h2>
+      <p class="credit-note"></p>
+
     </div>
-    <div class="slide-footer">Katam-Bray <span class="sep">·</span> Portfolio Template <span class="sep">·</span> Minimalist Edition</div>
+    <div class="slide-footer">Joel Dan Venalon @ 2026</div>
   </section>
 
 </body>
